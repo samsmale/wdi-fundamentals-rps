@@ -46,17 +46,17 @@ function getWinner(playerMove,computerMove) {
     else if (playerMove === 'scissors' && computerMove === 'rock') {
         winner = 'computer'
     }
+       else if (playerMove === 'scissors' && computerMove === 'paper') {
+        winner = 'player'
+    }
     else if (playerMove === 'paper' && computerMove === 'rock') {
         winner = 'player'
     }
+        else if (playerMove === 'paper' && computerMove === 'scissors') {
+        winner = 'computer'
+    }
     else if (playerMove === 'rock' && computerMove === 'scissors') {
         winner = 'player'
-    }
-    else if (playerMove === 'scissors' && computerMove === 'paper') {
-        winner = 'player'
-    }
-    else if (playerMove === 'paper' && computerMove === 'scissors') {
-        winner = 'computer'
     }
     else if (playerMove === 'rock' && computerMove === 'paper') {
         winner = 'computer'
@@ -69,8 +69,15 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
-    return [playerWins, computerWins];
+    while (playerWins < 5 && computerWins < 5) {
+        var winner = getWinner(playerMove,computerMove)
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove();
+        if (winner === 'player') {playerWins += 1, console.log("You won. Play again?")}
+        if (winner === 'computer') {computerWins += 1, console.log("I won. Play again?")}
+        else if (winner === 'tie') {console.log ("We tied. Play again?")}
+}
+    return ("Game over the final score is: " + "Your score is " + playerWins + " My score is " + computerWins);
 }
 
-
+playToFive()
